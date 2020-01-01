@@ -6,8 +6,24 @@ use App\Model\User;
 use Illuminate\Support\Facades\DB;
 use function base_path;
 
+/**
+ * Class BoratCacheController
+ * @package App\Http\Controllers
+ */
 class BoratCacheController extends Controller
 {
+
+    /**
+     * @todo add logic for packages clear with foreach use cacheClear function
+     */
+    public function packagesClear()
+    {
+
+    }
+
+    /**
+     * @param array $package
+     */
     public function clearCache(array $package)
     {
         $filename = base_path() . '/public/cache/' . str_replace('/', '-', $package['fullname'] . '.json');
@@ -60,7 +76,10 @@ class BoratCacheController extends Controller
     }
 
 
-    public function clear()
+    /**
+     * @return mixed
+     */
+    public function packageClear()
     {
         $validation = $this->validate($this->request, [
             'id' => 'required|integer'
